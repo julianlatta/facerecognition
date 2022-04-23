@@ -52,7 +52,7 @@ class App extends React.Component {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            input: this.state.input
+          input: this.state.input
         })
       })
       .then(response => response.json())
@@ -106,7 +106,6 @@ class App extends React.Component {
     const { isSignedIn, imageUrl, route, box} = this.state;
     return (
       <div className="App">
-        { /* <ParticlesBackground /> */ }
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
         { route === 'home' 
           ? <div>
@@ -119,7 +118,7 @@ class App extends React.Component {
                 onInputChange={this.onInputChange} 
                 onButtomSubmit={this.onButtonSubmit} 
               />
-            <FaceRecognition imageUrl={imageUrl} box={box} />
+            <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
           : (
             route === 'signin' 
