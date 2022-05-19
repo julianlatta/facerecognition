@@ -1,5 +1,5 @@
 import React from 'react';
-//import ParticlesBackground from './components/ParticlesBackground/ParticlesBackground';
+//import Particles from './components/Particles/Particles';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import Rank from './components/Rank/Rank';
@@ -8,8 +8,6 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import './App.css';
-
-window.process = {};
 
 const initialState = {
   input: '',
@@ -103,7 +101,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { isSignedIn, imageUrl, route, box} = this.state;
+    const {isSignedIn, imageUrl, route, box} = this.state;
     return (
       <div className="App">
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
@@ -116,20 +114,14 @@ class App extends React.Component {
               /> 
               <ImageLinkForm 
                 onInputChange={this.onInputChange} 
-                onButtomSubmit={this.onButtonSubmit} 
+                onButtonSubmit={this.onButtonSubmit} 
               />
-            <FaceRecognition box={box} imageUrl={imageUrl} />
+            <FaceRecognition imageUrl={imageUrl} box={box} />
           </div>
           : (
             route === 'signin' 
-            ? <Signin 
-              loadUser={this.loadUser}
-              onRouteChange={this.onRouteChange}
-              />
-            : <Register 
-                loadUser={this.loadUser}
-                onRouteChange={this.onRouteChange}
-              />
+            ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+            : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           )
         }
       </div>
