@@ -1,5 +1,5 @@
 import React from 'react';
-//import Particles from './components/Particles/Particles';
+import Particles from './components/Particles/Particles';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import Rank from './components/Rank/Rank';
@@ -104,6 +104,9 @@ class App extends React.Component {
     const {isSignedIn, imageUrl, route, box} = this.state;
     return (
       <div className="App">
+        <div style={{ position: "relative", zIndex: "-1" }}>
+          <Particles/>
+        </div>
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
         { route === 'home' 
           ? <div>
